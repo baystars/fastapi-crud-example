@@ -1,0 +1,16 @@
+*.pyc
+*~
+*.bak*
+*.orig
+data/*.db*
+__pychache__
+.python-version
+.pytest_cache
+.sass-cache
+.vscode
+.DS_Store
+.cache
+.env
+.env.local
+tests/env.json
+TODO.org

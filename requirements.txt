@@ -1,0 +1,6 @@
+fastapi==0.61.1
+pytest==6.1.1
+requests==2.24.0
+uvicorn==0.11.8
+databases==0.3.2
+aiosqlite==0.15.0
