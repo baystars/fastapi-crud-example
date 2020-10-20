@@ -1,6 +1,6 @@
 # -*- mode: python -*- -*- coding: utf-8 -*-
 import sqlalchemy
-from app.database import (metadata, engine)
+from app.service.database import (metadata, engine)
 
 User = sqlalchemy.Table(
     'user',

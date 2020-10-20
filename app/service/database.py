@@ -2,9 +2,9 @@
 import databases
 import sqlalchemy
 
-from .config import (DATABASE_URI, ECHO_LOG)
+from app.config import (DATABASE_URI, ECHO_LOG)
 
 # databases
-db = databases.Database(DATABASE_URI, min_size=5, max_size=20)
+db = databases.Database(DATABASE_URI)
 engine = sqlalchemy.create_engine(DATABASE_URI, echo=ECHO_LOG)
 metadata = sqlalchemy.MetaData()

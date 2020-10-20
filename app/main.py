@@ -2,8 +2,8 @@
 from fastapi import FastAPI
 from starlette.requests import Request
 
-from .database import db
-from .user.endpoints import router as user_router
+from app.service.database import db
+from app.user.endpoints import router as user_router
 
 app = FastAPI()
 
