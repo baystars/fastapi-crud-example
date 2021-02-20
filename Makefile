@@ -1,14 +1,12 @@
 MAKEFLAGS += --warn-undefined-variables
 SHELL := /bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
-.DEFAULT_GOAL := run
+.DEFAULT_GOAL := test
 
 # all targets are phony
 .PHONY: $(shell egrep -o ^[a-zA-Z_-]+: $(MAKEFILE_LIST) | sed 's/://')
 
-FLASK_ENV=development
-
-TEST_ENDPOINT="http://localhost:8000/api/v1"
+TEST_ENDPOINT="http://localhost:8000"
 
 ifneq ("$(wildcard ./.env)","")
   include ./.env
@@ -28,38 +26,8 @@ test-quiet: ## Run test quiet
 test-verbose: ## Run test verbose
 	pytest -s --verbose
 
-get-test-value:
-	@$(eval TOKEN := $(shell cat tests/env.json|jq -r '.TEST_JUDGE_TOKEN'))
-	@$(eval SECTION := $(shell cat tests/env.json|jq -r '.TEST_SECTION'))
-
-curl-status: get-test-value
-	@curl -X GET "${TEST_ENDPOINT}/status/${SECTION}" -H  "accept: application/json" -H  "X-Authentication: ${TOKEN}"
-
-db-insert:
-	@cd $(PWD)/scripts && python db.py
-
-deploy: deploy-test-clean-backup ## Deploy application
-
-deploy-mock:
-	@fab mock
-
-deploy-test:
-	@fab test deploy:backup=True
-
-deploy-stage:
-	@fab stage deploy:backup=True
-
-deploy-prod:
-	@fab prod deploy:backup=True
-
-deploy-test-clean-backup: ## Deploy on testing environment and clean old backups
-	@fab test deploy:backup=True,clean=True
-
-deploy-stage-clean-backup: ## Deploy on staging environment and clean old backups
-	@fab stage deploy:backup=True,clean=True
-
-deploy-prod-clean-backup: ## Deploy on production environment and clean old backups
-	@fab prod deploy:backup=True,clean=True
+curl: ## Curl get response
+	@curl -X GET "${TEST_ENDPOINT}"/users/
 
 help: ## Print this help
 	@echo 'Usage: make [target]'
