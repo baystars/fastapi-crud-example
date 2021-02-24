@@ -9,6 +9,7 @@ class UserBase(BaseModel):
     """User Model"""
     name: str
     email: str
+    password: Optional[str]
 
 
 class UserSelect(UserBase):

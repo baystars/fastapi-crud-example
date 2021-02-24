@@ -48,7 +48,7 @@ async def users_create(user: UserCreate, database: Database = Depends(get_connec
     return {**user.dict()}
 
 
-@router.post("/users/update", response_model=UserSelect)
+@router.patch("/users/update", response_model=UserSelect)
 async def users_update(user: UserUpdate, database: Database = Depends(get_connection)):
     """usersを更新します。"""
     # validatorは省略
