@@ -1,6 +1,6 @@
-# contest-backend
+# crud-backend-example
 
-品評会審査プログラムのバックエンド
+APIバックエンド
 
 ## 設定
 
@@ -61,3 +61,4 @@ Invalid column name ...
 
 * [FastAPIを使ってCRUD APIを作成する \- Qiita](https://qiita.com/t-iguchi/items/d01b24fed05db43fd0b8)
 * [Async SQL \(Relational\) Databases \- FastAPI](https://fastapi.tiangolo.com/advanced/async-sql-databases/)
+* [from starlette\.middleware\.cors import CORSMiddleware](https://qiita.com/satto_sann/items/0e1f5dbbe62efc612a78)

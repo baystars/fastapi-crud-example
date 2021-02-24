@@ -5,17 +5,18 @@ from typing import Optional
 from pydantic import (BaseModel)
 
 
-class User(BaseModel):
+class UserBase(BaseModel):
     """User Model"""
     name: str
     email: str
 
 
-class UserSelect(User):
+class UserSelect(UserBase):
     """User Select Model"""
+    id: int
 
 
-class UserCreate(User):
+class UserCreate(UserBase):
     """User Create Model"""
     password: Optional[str]
     create_at: Optional[datetime.date]

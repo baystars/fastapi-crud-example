@@ -38,7 +38,7 @@ async def users_findone(user_id: int, database: Database = Depends(get_connectio
     return await database.fetch_one(query)
 
 
-@router.post("/users/add", response_model=UserSelect)
+@router.post("/users/add", response_model=UserCreate)
 async def users_create(user: UserCreate, database: Database = Depends(get_connection)):
     """usersを新規登録します。"""
     # validatorは省略
@@ -58,9 +58,9 @@ async def users_update(user: UserUpdate, database: Database = Depends(get_connec
     return {**user.dict()}
 
 
-@router.post("/users/delete")
-async def users_delete(user: UserUpdate, database: Database = Depends(get_connection)):
+@router.delete("/users/{user_id}")
+async def users_delete(user_id: int, database: Database = Depends(get_connection)):
     """usersを削除します。"""
-    query = users.delete().where(users.columns.id == user.id)
+    query = users.delete().where(users.columns.id == user_id)
     ret = await database.execute(query)
     return {"result": "delete success"}
