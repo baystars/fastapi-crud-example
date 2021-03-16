@@ -1,0 +1,28 @@
+@base_url = http://localhost:8000
+
+### get all user list
+{{base_url}}/user
+
+### find user with id 2
+{{base_url}}/user/find?id=2
+
+### add user
+POST {{base_url}}/user/create HTTP/1.1
+content-type: application/json
+
+{
+    "username": "hagechabin",
+    "email": "hagechabin@example.com",
+    "password": "hagechabin",
+    "is_active": false,
+    "is_superuser": false
+}
+
+### update user
+DELETE {{base_url}}/user/delete HTTP/1.1
+content-type: application/json
+
+{
+    "id": 5,
+    "username": "hagechabin"
+}
