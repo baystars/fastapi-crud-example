@@ -8,7 +8,6 @@ from starlette.requests import Request
 
 from .models import users
 from .schemas import (UserSelect, UserCreate, UserUpdate)
-
 from app.utils.dbutils import get_connection
 
 router = APIRouter()

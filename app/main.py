@@ -3,7 +3,7 @@ from starlette.requests import Request
 from starlette.middleware.cors import CORSMiddleware
 
 from app.service.database import database
-from app.users.endpoints import router as userrouter
+from app.routers import router as userrouter
 
 app = FastAPI()
 
