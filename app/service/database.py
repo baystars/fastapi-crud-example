@@ -2,9 +2,14 @@
 import databases
 import sqlalchemy
 
-from app.config import (DATABASE_URI, ECHO_LOG)
+DATABASE_URL = 'sqlite:///data/data.db'
 
 # databases
-db = databases.Database(DATABASE_URI)
-engine = sqlalchemy.create_engine(DATABASE_URI, echo=ECHO_LOG)
+#database = databases.Database(DATABASE_URL, min_size=5, max_size=20)
+database = databases.Database(DATABASE_URL)
+
+ECHO_LOG = False
+
+engine = sqlalchemy.create_engine(DATABASE_URL, echo=ECHO_LOG)
+
 metadata = sqlalchemy.MetaData()

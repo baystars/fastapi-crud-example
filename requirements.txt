@@ -1,9 +1,7 @@
-fastapi==0.61.1
-pytest==6.1.1
-requests==2.24.0
-uvicorn==0.11.8
-databases==0.3.2
-aiosqlite==0.15.0
+fastapi==0.63.0
+pytest==6.2.1
+requests==2.25.0
+uvicorn==0.13.3
 #databases[sqlite]
-#databases[mysql]
-#databases[postgresql]
+databases==0.4.1
+aiosqlite==0.16
